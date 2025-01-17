@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "my_library"
+version = "0.0.1"
+description = "client for Dangerous API" #
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Yurii Sulima", email = "mblueberry.dev@gmail.com"}
+]
+keywords = ["dangerous", "library", "python"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+dependencies = [
+    "aiohttp~=3.10.11"
+]
+requires-python = ">=3.10"
+
+[project.urls]
+homepage = "https://github.com/yurasulima/berrycorepy"
+repository = "https://github.com/yurasulima/berrycorepy"
+documentation = "https://github.com/yurasulima/berrycorepy"
