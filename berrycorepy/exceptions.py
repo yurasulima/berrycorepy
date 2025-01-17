@@ -68,3 +68,12 @@ class ClientDecodeError(BerrycoreError):
             f"{original_type.__module__}.{original_type.__name__}: {self.original}\n"
             f"Content: {self.data}"
         )
+
+
+
+class DangerousNetworkError(DangerousAPIError):
+    """
+    Base exception for all Dangerous network errors.
+    """
+
+    label = "HTTP Client says"

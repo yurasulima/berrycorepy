@@ -1,10 +1,14 @@
+from __future__ import annotations
 
 from typing import TypeVar, Any, Generic, Generator, TYPE_CHECKING, ClassVar, Dict, Optional
 from abc import ABC, abstractmethod
 from pydantic import BaseModel, ConfigDict
 
-from berrycorepy.client.client import Client
 from berrycorepy.client.context_controller import ClientContextController
+from ..types.response_parameters import ResponseParameters
+
+if TYPE_CHECKING:
+    from ..client.client import Client
 
 DangerousType = TypeVar("DangerousType", bound=Any)
 

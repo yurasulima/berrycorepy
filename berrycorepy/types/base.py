@@ -14,7 +14,6 @@ class DangerousObject(ClientContextController, BaseModel):
         frozen=True,
         populate_by_name=True,
         arbitrary_types_allowed=True,
-        defer_build=True,
     )
 
     @model_validator(mode="before")

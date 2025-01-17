@@ -1,18 +1,22 @@
+from __future__ import annotations
 import abc
 import datetime
 import json
 from enum import Enum
 from http import HTTPStatus
 from types import TracebackType
-from typing import Final, Callable, Any, cast, Optional, Dict, AsyncGenerator, Type
+from typing import Final, Callable, Any, cast, Optional, Dict, AsyncGenerator, Type, TYPE_CHECKING
 
 from pydantic import ValidationError
 
-from berrycorepy.client.client import Client
 from berrycorepy.client.dangerous import PRODUCTION, DangerousAPIServer
+from berrycorepy.client.session.middlewares.manager import RequestMiddlewareManager
 from berrycorepy.exceptions import ClientDecodeError, DangerousAPIError
 from berrycorepy.methods.base import DangerousType, DangerousMethod, Response
 from berrycorepy.types.base import DangerousObject
+
+if TYPE_CHECKING:
+    from berrycorepy.client.client import Client
 
 _JsonLoads = Callable[..., Any]
 _JsonDumps = Callable[..., str]
@@ -43,6 +47,8 @@ class BaseSession(abc.ABC):
         self.json_loads = json_loads
         self.json_dumps = json_dumps
         self.timeout = timeout
+
+        self.middleware = RequestMiddlewareManager()
 
     def check_response(
             self, client: Client, method: DangerousMethod[DangerousType], status_code: int, content: str

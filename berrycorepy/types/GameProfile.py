@@ -1,11 +1,11 @@
 from datetime import datetime
+from typing import Optional
+from berrycorepy.types.base import DangerousObject
 
-from pydantic import BaseModel
 
-
-class GameProfile(BaseModel):
-    id: int
-    xbox: str
-    create_at: datetime | None
-    xuid: int | None
-    uuid: str | None
+class GameProfile(DangerousObject):
+    id: Optional[int]
+    xbox: Optional[str]
+    xuid: Optional[int]
+    uuid: Optional[str]
+    create_at: datetime
